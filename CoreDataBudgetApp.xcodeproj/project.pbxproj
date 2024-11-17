@@ -7,18 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		38C185662CE99482001CDBAA /* CoreDataBudgetAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C185652CE99482001CDBAA /* CoreDataBudgetAppApp.swift */; };
+		38C185662CE99482001CDBAA /* CoreDataBudgetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C185652CE99482001CDBAA /* CoreDataBudgetApp.swift */; };
 		38C185682CE99482001CDBAA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C185672CE99482001CDBAA /* ContentView.swift */; };
 		38C1856A2CE99483001CDBAA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38C185692CE99483001CDBAA /* Assets.xcassets */; };
 		38C1856D2CE99483001CDBAA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38C1856C2CE99483001CDBAA /* Preview Assets.xcassets */; };
+		38C185752CE99507001CDBAA /* CoreDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C185742CE99507001CDBAA /* CoreDataProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		38C185622CE99482001CDBAA /* CoreDataBudgetApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreDataBudgetApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		38C185652CE99482001CDBAA /* CoreDataBudgetAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataBudgetAppApp.swift; sourceTree = "<group>"; };
+		38C185652CE99482001CDBAA /* CoreDataBudgetApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataBudgetApp.swift; sourceTree = "<group>"; };
 		38C185672CE99482001CDBAA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		38C185692CE99483001CDBAA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		38C1856C2CE99483001CDBAA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		38C185742CE99507001CDBAA /* CoreDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,7 +53,8 @@
 		38C185642CE99482001CDBAA /* CoreDataBudgetApp */ = {
 			isa = PBXGroup;
 			children = (
-				38C185652CE99482001CDBAA /* CoreDataBudgetAppApp.swift */,
+				38C185732CE994E7001CDBAA /* Providers */,
+				38C185652CE99482001CDBAA /* CoreDataBudgetApp.swift */,
 				38C185672CE99482001CDBAA /* ContentView.swift */,
 				38C185692CE99483001CDBAA /* Assets.xcassets */,
 				38C1856B2CE99483001CDBAA /* Preview Content */,
@@ -65,6 +68,14 @@
 				38C1856C2CE99483001CDBAA /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		38C185732CE994E7001CDBAA /* Providers */ = {
+			isa = PBXGroup;
+			children = (
+				38C185742CE99507001CDBAA /* CoreDataProvider.swift */,
+			);
+			path = Providers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,7 +149,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				38C185682CE99482001CDBAA /* ContentView.swift in Sources */,
-				38C185662CE99482001CDBAA /* CoreDataBudgetAppApp.swift in Sources */,
+				38C185662CE99482001CDBAA /* CoreDataBudgetApp.swift in Sources */,
+				38C185752CE99507001CDBAA /* CoreDataProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
