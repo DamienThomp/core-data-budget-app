@@ -12,6 +12,7 @@
 		38C1856A2CE99483001CDBAA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38C185692CE99483001CDBAA /* Assets.xcassets */; };
 		38C1856D2CE99483001CDBAA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38C1856C2CE99483001CDBAA /* Preview Assets.xcassets */; };
 		38C185752CE99507001CDBAA /* CoreDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C185742CE99507001CDBAA /* CoreDataProvider.swift */; };
+		38C185782CE99962001CDBAA /* BudgetAppModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 38C185762CE99962001CDBAA /* BudgetAppModel.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		38C185692CE99483001CDBAA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		38C1856C2CE99483001CDBAA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		38C185742CE99507001CDBAA /* CoreDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataProvider.swift; sourceTree = "<group>"; };
+		38C185772CE99962001CDBAA /* BudgetAppModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BudgetAppModel.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 				38C185672CE99482001CDBAA /* ContentView.swift */,
 				38C185692CE99483001CDBAA /* Assets.xcassets */,
 				38C1856B2CE99483001CDBAA /* Preview Content */,
+				38C185762CE99962001CDBAA /* BudgetAppModel.xcdatamodeld */,
 			);
 			path = CoreDataBudgetApp;
 			sourceTree = "<group>";
@@ -148,6 +151,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38C185782CE99962001CDBAA /* BudgetAppModel.xcdatamodeld in Sources */,
 				38C185682CE99482001CDBAA /* ContentView.swift in Sources */,
 				38C185662CE99482001CDBAA /* CoreDataBudgetApp.swift in Sources */,
 				38C185752CE99507001CDBAA /* CoreDataProvider.swift in Sources */,
@@ -356,6 +360,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		38C185762CE99962001CDBAA /* BudgetAppModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				38C185772CE99962001CDBAA /* BudgetAppModel.xcdatamodel */,
+			);
+			currentVersion = 38C185772CE99962001CDBAA /* BudgetAppModel.xcdatamodel */;
+			name = BudgetAppModel.xcdatamodeld;
+			path = /Users/damienlthompson/Tutorials/SwiftUIProjects/CoreDataBudgetApp/CoreDataBudgetApp/BudgetAppModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 38C1855A2CE99481001CDBAA /* Project object */;
 }
