@@ -13,6 +13,7 @@
 		38C1856D2CE99483001CDBAA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38C1856C2CE99483001CDBAA /* Preview Assets.xcassets */; };
 		38C185752CE99507001CDBAA /* CoreDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C185742CE99507001CDBAA /* CoreDataProvider.swift */; };
 		38C185782CE99962001CDBAA /* BudgetAppModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 38C185762CE99962001CDBAA /* BudgetAppModel.xcdatamodeld */; };
+		38C1857B2CE99B82001CDBAA /* BudgetListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C1857A2CE99B82001CDBAA /* BudgetListScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		38C1856C2CE99483001CDBAA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		38C185742CE99507001CDBAA /* CoreDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataProvider.swift; sourceTree = "<group>"; };
 		38C185772CE99962001CDBAA /* BudgetAppModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BudgetAppModel.xcdatamodel; sourceTree = "<group>"; };
+		38C1857A2CE99B82001CDBAA /* BudgetListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetListScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +57,7 @@
 		38C185642CE99482001CDBAA /* CoreDataBudgetApp */ = {
 			isa = PBXGroup;
 			children = (
+				38C185792CE99B5B001CDBAA /* Screens */,
 				38C185732CE994E7001CDBAA /* Providers */,
 				38C185652CE99482001CDBAA /* CoreDataBudgetApp.swift */,
 				38C185672CE99482001CDBAA /* ContentView.swift */,
@@ -79,6 +82,14 @@
 				38C185742CE99507001CDBAA /* CoreDataProvider.swift */,
 			);
 			path = Providers;
+			sourceTree = "<group>";
+		};
+		38C185792CE99B5B001CDBAA /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				38C1857A2CE99B82001CDBAA /* BudgetListScreen.swift */,
+			);
+			path = Screens;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,6 +162,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38C1857B2CE99B82001CDBAA /* BudgetListScreen.swift in Sources */,
 				38C185782CE99962001CDBAA /* BudgetAppModel.xcdatamodeld in Sources */,
 				38C185682CE99482001CDBAA /* ContentView.swift in Sources */,
 				38C185662CE99482001CDBAA /* CoreDataBudgetApp.swift in Sources */,
