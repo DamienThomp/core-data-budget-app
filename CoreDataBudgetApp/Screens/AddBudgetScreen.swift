@@ -14,7 +14,8 @@ struct AddBudgetScreen: View {
     @State private var limit: Double?
 
     private var isFormValid: Bool {
-        !title.isEmpty && limit != nil
+        guard let limit else { return false }
+        return !title.isEmptyOrWhitespace && Double(limit) > 0
     }
 
     var body: some View {
