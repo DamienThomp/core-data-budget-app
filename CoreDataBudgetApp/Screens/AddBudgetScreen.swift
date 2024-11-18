@@ -9,13 +9,36 @@ import SwiftUI
 
 struct AddBudgetScreen: View {
 
+    @Environment(\.managedObjectContext) private var context
     @Environment(\.dismiss) private var dismiss
+
     @State private var title: String = ""
     @State private var limit: Double?
+    @State private var errorMessage: String?
 
     private var isFormValid: Bool {
         guard let limit else { return false }
         return !title.isEmptyOrWhitespace && Double(limit) > 0
+    }
+
+    private func saveBudgetItem() {
+
+        let budget = Budget(context: context)
+        budget.title = title
+        budget.amount = limit ?? 0.0
+        budget.dateCreated = Date()
+
+        do {
+            try context.save()
+            errorMessage = nil
+        } catch {
+            errorMessage = "Unable to save budget."
+        }
+    }
+
+    private func resetForm() {
+        title = ""
+        limit = nil
     }
 
     var body: some View {
@@ -29,11 +52,24 @@ struct AddBudgetScreen: View {
                     .accessibilityLabel("Budget Limit")
                     .accessibilityValue("\(limit ?? 0) total limit for budget item")
             }
+
+            if let errorMessage {
+                Section("Error") {
+                    Text(errorMessage)
+                        .foregroundStyle(.pink)
+                }
+            }
         }
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
-                    // TODO: handle save action
+                    if Budget.exists(context: context, title: title) {
+                        errorMessage = "Budget already exists for this title."
+                        return
+                    }
+
+                    saveBudgetItem()
+                    resetForm()
                     dismiss()
                 } label: {
                     Text("Save")
@@ -56,5 +92,8 @@ struct AddBudgetScreen: View {
 #Preview {
     NavigationStack {
         AddBudgetScreen()
-    }
+    }.environment(
+        \.managedObjectContext,
+         CoreDataProvider.preview.context
+    )
 }
