@@ -18,7 +18,7 @@ struct BudgetListItem: View {
             Text(
                 budget.amount,
                 format: .currency(
-                    code: Locale.current.currency?.identifier ?? "CAD"
+                    code: Locale.current.currencyCode
                 )
             )
         }

@@ -16,8 +16,13 @@ struct BudgetListScreen: View {
         ZStack {
             List {
                 ForEach(budgets, id: \.id) { budget in
-                    BudgetListItem(budget: budget)
-                        .accessibilityLabel("Budget List item")
+                    NavigationLink {
+                        BudgetDetailScreen(budget: budget)
+                    } label: {
+                        BudgetListItem(budget: budget)
+                            .padding(.trailing, 8)
+                            .accessibilityLabel("Budget List item")
+                    }
                 }
                 .listRowBackground(
                     RoundedRectangle(

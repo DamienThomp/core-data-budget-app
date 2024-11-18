@@ -26,6 +26,13 @@ final class CoreDataProvider {
         previewBudget.amount = 100
         previewBudget.dateCreated = Date()
 
+        let previewExpense = Expense(context: context)
+        previewExpense.title = "Some Expense"
+        previewExpense.amount = 15
+        previewExpense.dateCreated = Date()
+
+        previewBudget.addToExpenses(previewExpense)
+
         do {
             try context.save()
         } catch {
