@@ -15,6 +15,7 @@
 		38C1857B2CE99B82001CDBAA /* BudgetListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C1857A2CE99B82001CDBAA /* BudgetListScreen.swift */; };
 		38C1857D2CEAD959001CDBAA /* AddBudgetScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C1857C2CEAD959001CDBAA /* AddBudgetScreen.swift */; };
 		38C185802CEAE4E4001CDBAA /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C1857F2CEAE4E4001CDBAA /* String+Extensions.swift */; };
+		38C185822CEAEAB4001CDBAA /* Budget+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C185812CEAEAB4001CDBAA /* Budget+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		38C1857A2CE99B82001CDBAA /* BudgetListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetListScreen.swift; sourceTree = "<group>"; };
 		38C1857C2CEAD959001CDBAA /* AddBudgetScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBudgetScreen.swift; sourceTree = "<group>"; };
 		38C1857F2CEAE4E4001CDBAA /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		38C185812CEAEAB4001CDBAA /* Budget+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Budget+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				38C1857F2CEAE4E4001CDBAA /* String+Extensions.swift */,
+				38C185812CEAEAB4001CDBAA /* Budget+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -175,6 +178,7 @@
 			files = (
 				38C1857D2CEAD959001CDBAA /* AddBudgetScreen.swift in Sources */,
 				38C185802CEAE4E4001CDBAA /* String+Extensions.swift in Sources */,
+				38C185822CEAEAB4001CDBAA /* Budget+Extensions.swift in Sources */,
 				38C1857B2CE99B82001CDBAA /* BudgetListScreen.swift in Sources */,
 				38C185782CE99962001CDBAA /* BudgetAppModel.xcdatamodeld in Sources */,
 				38C185662CE99482001CDBAA /* CoreDataBudgetApp.swift in Sources */,

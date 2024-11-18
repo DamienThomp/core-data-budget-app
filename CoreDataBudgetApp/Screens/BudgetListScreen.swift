@@ -9,11 +9,14 @@ import SwiftUI
 
 struct BudgetListScreen: View {
 
+    @FetchRequest(sortDescriptors: []) private var budgets: FetchedResults<Budget>
     @State private var isPresented: Bool = false
 
     var body: some View {
         List {
-            Text("Budget Items will be listed here")
+            ForEach(budgets, id: \.id) { budget in
+                Text(budget.title ?? "")
+            }
         }
         .navigationTitle("Budget App")
         .toolbar {
@@ -31,7 +34,6 @@ struct BudgetListScreen: View {
             }
             .presentationDetents([.medium])
             .presentationDragIndicator(.visible)
-
         }
     }
 }
@@ -39,5 +41,8 @@ struct BudgetListScreen: View {
 #Preview {
     NavigationStack {
         BudgetListScreen()
-    }
+    }.environment(
+        \.managedObjectContext,
+         CoreDataProvider.preview.context
+    )
 }
