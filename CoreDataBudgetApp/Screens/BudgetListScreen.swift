@@ -26,7 +26,12 @@ struct BudgetListScreen: View {
             }
         }
         .sheet(isPresented: $isPresented) {
-            Text("Add Budget Form")
+            NavigationStack {
+                AddBudgetScreen()
+            }
+            .presentationDetents([.medium])
+            .presentationDragIndicator(.visible)
+
         }
     }
 }
