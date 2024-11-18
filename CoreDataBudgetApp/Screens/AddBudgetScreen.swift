@@ -30,7 +30,6 @@ struct AddBudgetScreen: View {
 
         do {
             try context.save()
-            errorMessage = nil
         } catch {
             errorMessage = "Unable to save budget."
         }
@@ -39,11 +38,12 @@ struct AddBudgetScreen: View {
     private func resetForm() {
         title = ""
         limit = nil
+        errorMessage = nil
     }
 
     var body: some View {
         Form {
-            Section(header: Text("New Budget")) {
+            Section {
                 TextField("Title", text: $title)
                     .accessibilityLabel("Budget Title")
                     .accessibilityValue(title)
@@ -56,10 +56,12 @@ struct AddBudgetScreen: View {
             if let errorMessage {
                 Section("Error") {
                     Text(errorMessage)
+                        .accessibilityLabel("Error message")
                         .foregroundStyle(.pink)
                 }
             }
         }
+        .navigationTitle("New Budget")
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button {

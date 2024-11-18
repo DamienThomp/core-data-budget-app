@@ -31,6 +31,7 @@ struct BudgetListScreen: View {
         .sheet(isPresented: $isPresented) {
             NavigationStack {
                 AddBudgetScreen()
+                    .padding(.top, 16)
             }
             .presentationDetents([.medium])
             .presentationDragIndicator(.visible)
