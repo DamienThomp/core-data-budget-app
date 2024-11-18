@@ -52,6 +52,7 @@ struct AddBudgetScreen: View {
                     .accessibilityLabel("Budget Limit")
                     .accessibilityValue("\(limit ?? 0) total limit for budget item")
             }
+            .listRowBackground(Rectangle().fill(.thinMaterial))
 
             if let errorMessage {
                 Section("Error") {
@@ -61,6 +62,7 @@ struct AddBudgetScreen: View {
                 }
             }
         }
+        .scrollContentBackground(.hidden)
         .navigationTitle("New Budget")
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
@@ -94,7 +96,8 @@ struct AddBudgetScreen: View {
 #Preview {
     NavigationStack {
         AddBudgetScreen()
-    }.environment(
+    }
+    .environment(
         \.managedObjectContext,
          CoreDataProvider.preview.context
     )

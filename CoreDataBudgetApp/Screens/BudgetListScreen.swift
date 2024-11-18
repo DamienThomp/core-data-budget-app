@@ -13,10 +13,21 @@ struct BudgetListScreen: View {
     @State private var isPresented: Bool = false
 
     var body: some View {
-        List {
-            ForEach(budgets, id: \.id) { budget in
-                BudgetListItem(budget: budget)
+        ZStack {
+            List {
+                ForEach(budgets, id: \.id) { budget in
+                    BudgetListItem(budget: budget)
+                        .accessibilityLabel("Budget List item")
+                }
+                .listRowBackground(
+                    RoundedRectangle(
+                        cornerRadius: 12
+                    ).fill(
+                        .thinMaterial
+                    )
+                )
             }
+            .scrollContentBackground(.hidden)
         }
         .navigationTitle("Budget App")
         .toolbar {
@@ -26,13 +37,14 @@ struct BudgetListScreen: View {
                 } label: {
                     Image(systemName: "plus.circle")
                 }
+                .accessibilityLabel("Add new budget")
             }
         }
         .sheet(isPresented: $isPresented) {
             NavigationStack {
-                AddBudgetScreen()
-                    .padding(.top, 16)
+                AddBudgetScreen().padding(.top, 16)
             }
+            .presentationBackground(.thinMaterial)
             .presentationDetents([.medium])
             .presentationDragIndicator(.visible)
         }
