@@ -24,7 +24,3 @@ struct BudgetListItem: View {
         }
     }
 }
-
-//#Preview(traits: .sizeThatFitsLayout) {
-//    BudgetListItemView()
-//}
