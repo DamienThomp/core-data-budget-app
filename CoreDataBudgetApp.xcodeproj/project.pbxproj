@@ -8,25 +8,25 @@
 
 /* Begin PBXBuildFile section */
 		38C185662CE99482001CDBAA /* CoreDataBudgetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C185652CE99482001CDBAA /* CoreDataBudgetApp.swift */; };
-		38C185682CE99482001CDBAA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C185672CE99482001CDBAA /* ContentView.swift */; };
 		38C1856A2CE99483001CDBAA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38C185692CE99483001CDBAA /* Assets.xcassets */; };
 		38C1856D2CE99483001CDBAA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38C1856C2CE99483001CDBAA /* Preview Assets.xcassets */; };
 		38C185752CE99507001CDBAA /* CoreDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C185742CE99507001CDBAA /* CoreDataProvider.swift */; };
 		38C185782CE99962001CDBAA /* BudgetAppModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 38C185762CE99962001CDBAA /* BudgetAppModel.xcdatamodeld */; };
 		38C1857B2CE99B82001CDBAA /* BudgetListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C1857A2CE99B82001CDBAA /* BudgetListScreen.swift */; };
 		38C1857D2CEAD959001CDBAA /* AddBudgetScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C1857C2CEAD959001CDBAA /* AddBudgetScreen.swift */; };
+		38C185802CEAE4E4001CDBAA /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C1857F2CEAE4E4001CDBAA /* String+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		38C185622CE99482001CDBAA /* CoreDataBudgetApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreDataBudgetApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38C185652CE99482001CDBAA /* CoreDataBudgetApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataBudgetApp.swift; sourceTree = "<group>"; };
-		38C185672CE99482001CDBAA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		38C185692CE99483001CDBAA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		38C1856C2CE99483001CDBAA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		38C185742CE99507001CDBAA /* CoreDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataProvider.swift; sourceTree = "<group>"; };
 		38C185772CE99962001CDBAA /* BudgetAppModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BudgetAppModel.xcdatamodel; sourceTree = "<group>"; };
 		38C1857A2CE99B82001CDBAA /* BudgetListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetListScreen.swift; sourceTree = "<group>"; };
 		38C1857C2CEAD959001CDBAA /* AddBudgetScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBudgetScreen.swift; sourceTree = "<group>"; };
+		38C1857F2CEAE4E4001CDBAA /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,10 +59,10 @@
 		38C185642CE99482001CDBAA /* CoreDataBudgetApp */ = {
 			isa = PBXGroup;
 			children = (
+				38C1857E2CEAE4CF001CDBAA /* Extensions */,
 				38C185792CE99B5B001CDBAA /* Screens */,
 				38C185732CE994E7001CDBAA /* Providers */,
 				38C185652CE99482001CDBAA /* CoreDataBudgetApp.swift */,
-				38C185672CE99482001CDBAA /* ContentView.swift */,
 				38C185692CE99483001CDBAA /* Assets.xcassets */,
 				38C1856B2CE99483001CDBAA /* Preview Content */,
 				38C185762CE99962001CDBAA /* BudgetAppModel.xcdatamodeld */,
@@ -93,6 +93,14 @@
 				38C1857C2CEAD959001CDBAA /* AddBudgetScreen.swift */,
 			);
 			path = Screens;
+			sourceTree = "<group>";
+		};
+		38C1857E2CEAE4CF001CDBAA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				38C1857F2CEAE4E4001CDBAA /* String+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -166,9 +174,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				38C1857D2CEAD959001CDBAA /* AddBudgetScreen.swift in Sources */,
+				38C185802CEAE4E4001CDBAA /* String+Extensions.swift in Sources */,
 				38C1857B2CE99B82001CDBAA /* BudgetListScreen.swift in Sources */,
 				38C185782CE99962001CDBAA /* BudgetAppModel.xcdatamodeld in Sources */,
-				38C185682CE99482001CDBAA /* ContentView.swift in Sources */,
 				38C185662CE99482001CDBAA /* CoreDataBudgetApp.swift in Sources */,
 				38C185752CE99507001CDBAA /* CoreDataProvider.swift in Sources */,
 			);
