@@ -15,7 +15,7 @@ struct BudgetListScreen: View {
     var body: some View {
         List {
             ForEach(budgets, id: \.id) { budget in
-                Text(budget.title ?? "")
+                BudgetListItem(budget: budget)
             }
         }
         .navigationTitle("Budget App")
