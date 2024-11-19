@@ -35,7 +35,16 @@ struct BudgetListScreen: View {
 
     var body: some View {
         ZStack {
-            LinearGradient(colors: [.pink, .black], startPoint: .top, endPoint: .bottom).ignoresSafeArea()
+
+            LinearGradient(
+                colors: [
+                    .pink,
+                    .black
+                ],
+                startPoint: .top,
+                endPoint: .bottom
+            ).ignoresSafeArea()
+
             List {
                 ForEach(budgets, id: \.id) { budget in
                     NavigationLink {

@@ -83,7 +83,17 @@ struct BudgetDetailScreen: View {
     var body: some View {
 
         ZStack {
-            LinearGradient(colors: [.teal, .black], startPoint: .top, endPoint: .bottom).ignoresSafeArea()
+
+            LinearGradient(
+                colors: [
+                    .teal,
+                    .black
+                ],
+                startPoint: .top,
+                endPoint: .bottom
+            )
+            .ignoresSafeArea()
+            
             Form {
                 List {
                     CustomListIemView(label: "Remaining:", value: remaining)
