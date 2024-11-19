@@ -24,6 +24,7 @@ struct BudgetDetailScreen: View {
     @State private var title: String = ""
     @State private var amount: Double?
     @State private var errorMessage: String?
+    @FocusState private var fieldIsFocused: Bool
 
     private var total: Double {
         expenses.reduce(0) { result, expense in
@@ -78,6 +79,7 @@ struct BudgetDetailScreen: View {
         title = ""
         amount = nil
         errorMessage = nil
+        fieldIsFocused = false
     }
 
     var body: some View {
@@ -105,10 +107,12 @@ struct BudgetDetailScreen: View {
 
                 Section("New Expense") {
                     TextField("Title", text: $title)
+                        .focused($fieldIsFocused)
                         .accessibilityLabel("Expense Title")
                         .accessibilityValue(title)
                     TextField("Amount", value: $amount, format: .number)
-                        .keyboardType(.numberPad)
+                        .focused($fieldIsFocused)
+                        .keyboardType(.decimalPad)
                         .accessibilityLabel("Expense Amount")
                         .accessibilityValue("\(amount ?? 0) total amount for expense")
                 }
