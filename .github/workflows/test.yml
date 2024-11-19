@@ -9,19 +9,22 @@ on:
   pull_request:
     branches: [ "main" ]
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build:
 
     runs-on: macos-latest
-
+    
     steps:
-    # Checkout the repository
-    - name: Checkout repository
-      uses: actions/checkout@v4
-
-    # Run tests on iPhone 15 Simulator with iOS 17.0
-    - name: Run Tests on iPhone 15 Simulator (iOS 17.0)
-      run: |
-        xcodebuild test \
-          -scheme 'CoreDataBudgetApp' \
-          -destination 'platform=iOS Simulator,name=iPhone 15,OS=17.0'
+    - uses: actions/checkout@v4
+    - name: List available Xcode versions
+      run: ls /Applications | grep Xcode
+    - name: Set up Xcode version
+      run: sudo xcode-select -s /Applications/Xcode_15.2.app/Contents/Developer
+    - name: Show current version of Xcode
+      run: xcodebuild -version
+    - name: Run tests
+      run: ./run_tests.sh
