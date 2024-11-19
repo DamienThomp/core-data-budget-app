@@ -82,7 +82,8 @@ struct BudgetDetailScreen: View {
 
     var body: some View {
 
-        VStack {
+        ZStack {
+            LinearGradient(colors: [.teal, .black], startPoint: .top, endPoint: .bottom).ignoresSafeArea()
             Form {
                 List {
                     CustomListIemView(label: "Remaining:", value: remaining)
@@ -90,7 +91,7 @@ struct BudgetDetailScreen: View {
                         .padding(.vertical, 4)
                         .foregroundStyle(remaining > 0 ? .green : .red)
                     CustomListIemView(label: "Total Expenses:", value: total)
-                }
+                }.listRowBackground(Rectangle().fill(.thinMaterial))
 
                 Section("New Expense") {
                     TextField("Title", text: $title)
@@ -109,14 +110,16 @@ struct BudgetDetailScreen: View {
                 } label: {
                     Text("Save")
                         .frame(maxWidth: .infinity)
-                }.disabled(!isFormValid)
+                }
+                .listRowBackground(Rectangle().fill(.thinMaterial))
+                .disabled(!isFormValid)
 
                 if let errorMessage {
                     Section("Error") {
                         Text(errorMessage)
                             .accessibilityLabel("Error message")
                             .foregroundStyle(.pink)
-                    }
+                    }.listRowBackground(Rectangle().fill(.thinMaterial))
                 }
                 Section("Expenses") {
                     List {
@@ -124,11 +127,12 @@ struct BudgetDetailScreen: View {
                             ExpenseListView(expense: expense)
                         }
                         .onDelete(perform: deleteExpense)
-                    }
+                    }.listRowBackground(Rectangle().fill(.thinMaterial))
                 }
             }
         }
-        .padding(.top, 12)
+        .preferredColorScheme(.dark)
+        .scrollContentBackground(.hidden)
         .navigationTitle(budget.title ?? "Budget")
     }
 }
