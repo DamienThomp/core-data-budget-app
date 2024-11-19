@@ -9,8 +9,24 @@ import SwiftUI
 
 struct BudgetListScreen: View {
 
+    @Environment(\.managedObjectContext) private var context
+
     @FetchRequest(sortDescriptors: []) private var budgets: FetchedResults<Budget>
     @State private var isPresented: Bool = false
+
+    private func deleteBudget(at offsets: IndexSet) {
+
+        for index in offsets {
+            let budget = budgets[index]
+            context.delete(budget)
+        }
+
+        do {
+            try context.save()
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
 
     var body: some View {
         ZStack {
@@ -24,6 +40,7 @@ struct BudgetListScreen: View {
                             .accessibilityLabel("Budget List item")
                     }
                 }
+                .onDelete(perform: deleteBudget)
                 .listRowBackground(
                     RoundedRectangle(
                         cornerRadius: 12
@@ -32,10 +49,14 @@ struct BudgetListScreen: View {
                     )
                 )
             }
+            .padding(.top)
             .scrollContentBackground(.hidden)
         }
-        .navigationTitle("Budget App")
+        .navigationTitle("Budgets")
         .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                EditButton()
+            }
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
                     isPresented = true
@@ -44,6 +65,7 @@ struct BudgetListScreen: View {
                 }
                 .accessibilityLabel("Add new budget")
             }
+
         }
         .sheet(isPresented: $isPresented) {
             NavigationStack {
