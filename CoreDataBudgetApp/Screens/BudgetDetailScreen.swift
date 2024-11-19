@@ -83,7 +83,17 @@ struct BudgetDetailScreen: View {
     var body: some View {
 
         ZStack {
-            LinearGradient(colors: [.teal, .black], startPoint: .top, endPoint: .bottom).ignoresSafeArea()
+
+            LinearGradient(
+                colors: [
+                    .teal,
+                    .black
+                ],
+                startPoint: .top,
+                endPoint: .bottom
+            )
+            .ignoresSafeArea()
+            
             Form {
                 List {
                     CustomListIemView(label: "Remaining:", value: remaining)
@@ -122,14 +132,20 @@ struct BudgetDetailScreen: View {
                             .foregroundStyle(.pink)
                     }.listRowBackground(Rectangle().fill(.thinMaterial))
                 }
-                
+
                 Section("Expenses") {
-                    List {
-                        ForEach(expenses, id: \.id) { expense in
-                            ExpenseListView(expense: expense)
-                        }
-                        .onDelete(perform: deleteExpense)
-                    }.listRowBackground(Rectangle().fill(.thinMaterial))
+                    if expenses.isEmpty {
+                        ContentUnavailableView("Add an expense.", systemImage: "cart.badge.plus")
+                            .listRowBackground(Rectangle().fill(.thinMaterial))
+                            .foregroundStyle(.mint)
+                    } else {
+                        List {
+                            ForEach(expenses, id: \.id) { expense in
+                                ExpenseListView(expense: expense)
+                            }
+                            .onDelete(perform: deleteExpense)
+                        }.listRowBackground(Rectangle().fill(.thinMaterial))
+                    }
                 }
             }
         }
