@@ -132,14 +132,20 @@ struct BudgetDetailScreen: View {
                             .foregroundStyle(.pink)
                     }.listRowBackground(Rectangle().fill(.thinMaterial))
                 }
-                
+
                 Section("Expenses") {
-                    List {
-                        ForEach(expenses, id: \.id) { expense in
-                            ExpenseListView(expense: expense)
-                        }
-                        .onDelete(perform: deleteExpense)
-                    }.listRowBackground(Rectangle().fill(.thinMaterial))
+                    if expenses.isEmpty {
+                        ContentUnavailableView("Add an expense.", systemImage: "cart.badge.plus")
+                            .listRowBackground(Rectangle().fill(.thinMaterial))
+                            .foregroundStyle(.mint)
+                    } else {
+                        List {
+                            ForEach(expenses, id: \.id) { expense in
+                                ExpenseListView(expense: expense)
+                            }
+                            .onDelete(perform: deleteExpense)
+                        }.listRowBackground(Rectangle().fill(.thinMaterial))
+                    }
                 }
             }
         }

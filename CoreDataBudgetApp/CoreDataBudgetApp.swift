@@ -20,7 +20,6 @@ struct CoreDataBudgetApp: App {
         WindowGroup {
             NavigationStack {
                 BudgetListScreen()
-                    .preferredColorScheme(.dark)
                     .environment(\.managedObjectContext, provider.context)
             }
         }

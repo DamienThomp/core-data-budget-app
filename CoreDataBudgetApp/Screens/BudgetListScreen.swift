@@ -12,11 +12,11 @@ struct BudgetListScreen: View {
     @Environment(\.managedObjectContext) private var context
 
     @FetchRequest(
-        sortDescriptors: [ 
+        sortDescriptors: [
             SortDescriptor(\.dateCreated)
         ]
     ) private var budgets: FetchedResults<Budget>
-    
+
     @State private var isPresented: Bool = false
 
     private func deleteBudget(at offsets: IndexSet) {
@@ -45,32 +45,42 @@ struct BudgetListScreen: View {
                 endPoint: .bottom
             ).ignoresSafeArea()
 
-            List {
-                ForEach(budgets, id: \.id) { budget in
-                    NavigationLink {
-                        BudgetDetailScreen(budget: budget)
-                    } label: {
-                        BudgetListItem(budget: budget)
-                            .padding(.trailing, 8)
-                            .accessibilityLabel("Budget List item")
+            if budgets.isEmpty {
+                ContentUnavailableView(
+                    "Add a Budget.",
+                    systemImage: "creditcard"
+                ).foregroundStyle(.pink)
+            } else {
+                List {
+                    ForEach(budgets, id: \.id) { budget in
+                        NavigationLink {
+                            BudgetDetailScreen(budget: budget)
+                                .environment(\.managedObjectContext, context)
+                        } label: {
+                            BudgetListItem(budget: budget)
+                                .padding(.trailing, 8)
+                                .accessibilityLabel("Budget List item")
+                        }
                     }
-                }
-                .onDelete(perform: deleteBudget)
-                .listRowBackground(
-                    RoundedRectangle(
-                        cornerRadius: 12
-                    ).fill(
-                        .thinMaterial
+                    .onDelete(perform: deleteBudget)
+                    .listRowBackground(
+                        RoundedRectangle(
+                            cornerRadius: 12
+                        ).fill(
+                            .thinMaterial
+                        )
                     )
-                )
+                }
+                .scrollContentBackground(.hidden)
             }
-            .scrollContentBackground(.hidden)
         }
         .navigationTitle("Budgets")
         .toolbar {
+
             ToolbarItem(placement: .topBarLeading) {
                 EditButton()
             }
+
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
                     isPresented = true
@@ -92,6 +102,7 @@ struct BudgetListScreen: View {
             .presentationDetents([.medium])
             .presentationDragIndicator(.visible)
         }
+        .preferredColorScheme(.dark)
     }
 }
 

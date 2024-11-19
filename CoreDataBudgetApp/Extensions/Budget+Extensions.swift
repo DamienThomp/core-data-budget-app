@@ -9,7 +9,7 @@ import Foundation
 import CoreData
 
 extension Budget {
-    
+
     static func exists(context: NSManagedObjectContext, title: String) -> Bool {
 
         let request = Budget.fetchRequest()
