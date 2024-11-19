@@ -19,10 +19,6 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
 
-    # Install any dependencies
-    - name: Install Dependencies
-      run: swift package resolve
-
     # Run tests on iPhone 15 Simulator with iOS 17.0
     - name: Run Tests on iPhone 15 Simulator (iOS 17.0)
       run: |
