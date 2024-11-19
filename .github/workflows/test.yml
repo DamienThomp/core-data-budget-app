@@ -23,5 +23,5 @@ jobs:
     - name: Run Tests on iPhone 15 Simulator (iOS 17.0)
       run: |
         xcodebuild test \
-          -scheme 'Requestify' \
+          -scheme 'CoreDataBudgetApp' \
           -destination 'platform=iOS Simulator,name=iPhone 15,OS=17.0'
