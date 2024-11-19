@@ -25,6 +25,16 @@ struct BudgetDetailScreen: View {
     @State private var amount: Double?
     @State private var errorMessage: String?
 
+    private var total: Double {
+        expenses.reduce(0) { result, expense in
+            return expense.amount + result
+        }
+    }
+
+    private var remaining: Double {
+        budget.amount - total
+    }
+
     private var isFormValid: Bool {
 
         guard let amount else { return false }
@@ -58,7 +68,14 @@ struct BudgetDetailScreen: View {
 
     var body: some View {
         VStack {
+
             Form {
+                List {
+                    CustomListIemView(label: "Remaining", value: remaining)
+                        .foregroundStyle(remaining > 0 ? .green : .red)
+                    CustomListIemView(label: "Total Expenses:", value: total)
+                }
+
                 Section("New Expense") {
                     TextField("Title", text: $title)
                         .accessibilityLabel("Expense Title")

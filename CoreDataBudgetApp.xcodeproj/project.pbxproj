@@ -20,6 +20,7 @@
 		38C185872CEBF214001CDBAA /* BudgetDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C185862CEBF214001CDBAA /* BudgetDetailScreen.swift */; };
 		38C185892CEC0702001CDBAA /* Locale+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C185882CEC0702001CDBAA /* Locale+Extensions.swift */; };
 		38C1858B2CEC07DB001CDBAA /* ExpenseListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C1858A2CEC07DB001CDBAA /* ExpenseListView.swift */; };
+		38C1858D2CEC0E15001CDBAA /* CustomListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C1858C2CEC0E15001CDBAA /* CustomListItemView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		38C185862CEBF214001CDBAA /* BudgetDetailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetDetailScreen.swift; sourceTree = "<group>"; };
 		38C185882CEC0702001CDBAA /* Locale+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Locale+Extensions.swift"; sourceTree = "<group>"; };
 		38C1858A2CEC07DB001CDBAA /* ExpenseListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseListView.swift; sourceTree = "<group>"; };
+		38C1858C2CEC0E15001CDBAA /* CustomListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomListItemView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +124,7 @@
 			children = (
 				38C185842CEAF45E001CDBAA /* BudgetListItemView.swift */,
 				38C1858A2CEC07DB001CDBAA /* ExpenseListView.swift */,
+				38C1858C2CEC0E15001CDBAA /* CustomListItemView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -196,6 +199,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38C1858D2CEC0E15001CDBAA /* CustomListItemView.swift in Sources */,
 				38C1857D2CEAD959001CDBAA /* AddBudgetScreen.swift in Sources */,
 				38C185802CEAE4E4001CDBAA /* String+Extensions.swift in Sources */,
 				38C185822CEAEAB4001CDBAA /* Budget+Extensions.swift in Sources */,
