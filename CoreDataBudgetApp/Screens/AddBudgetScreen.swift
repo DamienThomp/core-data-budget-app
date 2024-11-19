@@ -89,7 +89,7 @@ struct AddBudgetScreen: View {
                 }
                 .accessibilityLabel("Cancel and dismiss")
             }
-        }
+        }.tint(.white)
     }
 }
 

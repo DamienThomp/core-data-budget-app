@@ -11,7 +11,12 @@ struct BudgetListScreen: View {
 
     @Environment(\.managedObjectContext) private var context
 
-    @FetchRequest(sortDescriptors: []) private var budgets: FetchedResults<Budget>
+    @FetchRequest(
+        sortDescriptors: [ 
+            SortDescriptor(\.dateCreated)
+        ]
+    ) private var budgets: FetchedResults<Budget>
+    
     @State private var isPresented: Bool = false
 
     private func deleteBudget(at offsets: IndexSet) {
@@ -30,6 +35,7 @@ struct BudgetListScreen: View {
 
     var body: some View {
         ZStack {
+            LinearGradient(colors: [.pink, .black], startPoint: .top, endPoint: .bottom).ignoresSafeArea()
             List {
                 ForEach(budgets, id: \.id) { budget in
                     NavigationLink {
@@ -49,7 +55,6 @@ struct BudgetListScreen: View {
                     )
                 )
             }
-            .padding(.top)
             .scrollContentBackground(.hidden)
         }
         .navigationTitle("Budgets")
@@ -67,9 +72,12 @@ struct BudgetListScreen: View {
             }
 
         }
+        .tint(.white)
         .sheet(isPresented: $isPresented) {
             NavigationStack {
-                AddBudgetScreen().padding(.top, 16)
+                AddBudgetScreen()
+                    .preferredColorScheme(.dark)
+                    .padding(.top, 16)
             }
             .presentationBackground(.thinMaterial)
             .presentationDetents([.medium])
