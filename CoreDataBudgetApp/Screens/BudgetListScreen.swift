@@ -36,14 +36,7 @@ struct BudgetListScreen: View {
     var body: some View {
         ZStack {
 
-            LinearGradient(
-                colors: [
-                    .pink,
-                    .black
-                ],
-                startPoint: .top,
-                endPoint: .bottom
-            ).ignoresSafeArea()
+            BackgroundGradientView(colors: [.pink, .black])
 
             if budgets.isEmpty {
                 ContentUnavailableView(
@@ -57,7 +50,7 @@ struct BudgetListScreen: View {
                             BudgetDetailScreen(budget: budget)
                                 .environment(\.managedObjectContext, context)
                         } label: {
-                            BudgetListItem(budget: budget)
+                            BudgetListItemView(budget: budget)
                                 .padding(.trailing, 8)
                                 .accessibilityLabel("Budget List item")
                         }

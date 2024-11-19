@@ -86,16 +86,8 @@ struct BudgetDetailScreen: View {
 
         ZStack {
 
-            LinearGradient(
-                colors: [
-                    .teal,
-                    .black
-                ],
-                startPoint: .top,
-                endPoint: .bottom
-            )
-            .ignoresSafeArea()
-            
+            BackgroundGradientView(colors: [.teal, .black])
+
             Form {
                 List {
                     CustomListIemView(label: "Remaining:", value: remaining)
