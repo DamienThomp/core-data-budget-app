@@ -111,6 +111,7 @@ struct BudgetDetailScreen: View {
                     Text("Save")
                         .frame(maxWidth: .infinity)
                 }
+                .tint(.green)
                 .listRowBackground(Rectangle().fill(.thinMaterial))
                 .disabled(!isFormValid)
 
