@@ -1,0 +1,31 @@
+# This workflow will build a Swift project
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-swift
+
+name: XCTest
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: macos-latest
+
+    steps:
+    # Checkout the repository
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    # Install any dependencies
+    - name: Install Dependencies
+      run: swift package resolve
+
+    # Run tests on iPhone 15 Simulator with iOS 17.0
+    - name: Run Tests on iPhone 15 Simulator (iOS 17.0)
+      run: |
+        xcodebuild test \
+          -scheme 'Requestify' \
+          -destination 'platform=iOS Simulator,name=iPhone 15,OS=17.0'
