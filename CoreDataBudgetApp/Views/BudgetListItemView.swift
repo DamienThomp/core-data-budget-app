@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct BudgetListItem: View {
+struct BudgetListItemView: View {
 
     let budget: Budget
 

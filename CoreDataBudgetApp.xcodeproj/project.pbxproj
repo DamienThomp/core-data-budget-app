@@ -22,6 +22,7 @@
 		38C1858B2CEC07DB001CDBAA /* ExpenseListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C1858A2CEC07DB001CDBAA /* ExpenseListView.swift */; };
 		38C1858D2CEC0E15001CDBAA /* CustomListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C1858C2CEC0E15001CDBAA /* CustomListItemView.swift */; };
 		38C1859C2CEC227B001CDBAA /* BudgetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C1859B2CEC227B001CDBAA /* BudgetTests.swift */; };
+		38C185B82CED3085001CDBAA /* BackgroundGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C185B72CED3085001CDBAA /* BackgroundGradientView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		38C1858C2CEC0E15001CDBAA /* CustomListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomListItemView.swift; sourceTree = "<group>"; };
 		38C185922CEC2248001CDBAA /* CoreDataBudgetAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoreDataBudgetAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		38C1859B2CEC227B001CDBAA /* BudgetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetTests.swift; sourceTree = "<group>"; };
+		38C185B72CED3085001CDBAA /* BackgroundGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundGradientView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +149,7 @@
 				38C185842CEAF45E001CDBAA /* BudgetListItemView.swift */,
 				38C1858A2CEC07DB001CDBAA /* ExpenseListView.swift */,
 				38C1858C2CEC0E15001CDBAA /* CustomListItemView.swift */,
+				38C185B72CED3085001CDBAA /* BackgroundGradientView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -260,6 +263,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				38C1858D2CEC0E15001CDBAA /* CustomListItemView.swift in Sources */,
+				38C185B82CED3085001CDBAA /* BackgroundGradientView.swift in Sources */,
 				38C1857D2CEAD959001CDBAA /* AddBudgetScreen.swift in Sources */,
 				38C185802CEAE4E4001CDBAA /* String+Extensions.swift in Sources */,
 				38C185822CEAEAB4001CDBAA /* Budget+Extensions.swift in Sources */,
@@ -545,7 +549,6 @@
 				38C185772CE99962001CDBAA /* BudgetAppModel.xcdatamodel */,
 			);
 			currentVersion = 38C185772CE99962001CDBAA /* BudgetAppModel.xcdatamodel */;
-			name = BudgetAppModel.xcdatamodeld;
 			path = BudgetAppModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
