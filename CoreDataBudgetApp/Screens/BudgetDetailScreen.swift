@@ -122,6 +122,7 @@ struct BudgetDetailScreen: View {
                             .foregroundStyle(.pink)
                     }.listRowBackground(Rectangle().fill(.thinMaterial))
                 }
+                
                 Section("Expenses") {
                     List {
                         ForEach(expenses, id: \.id) { expense in

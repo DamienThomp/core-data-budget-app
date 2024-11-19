@@ -18,9 +18,11 @@ struct CoreDataBudgetApp: App {
 
     var body: some Scene {
         WindowGroup {
-            BudgetListScreen()
-                .preferredColorScheme(.dark)
-                .environment(\.managedObjectContext, provider.context)
+            NavigationStack {
+                BudgetListScreen()
+                    .preferredColorScheme(.dark)
+                    .environment(\.managedObjectContext, provider.context)
+            }
         }
     }
 }
