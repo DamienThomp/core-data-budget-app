@@ -546,7 +546,7 @@
 			);
 			currentVersion = 38C185772CE99962001CDBAA /* BudgetAppModel.xcdatamodel */;
 			name = BudgetAppModel.xcdatamodeld;
-			path = /Users/damienlthompson/Tutorials/SwiftUIProjects/CoreDataBudgetApp/CoreDataBudgetApp/BudgetAppModel.xcdatamodeld;
+			path = BudgetAppModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
