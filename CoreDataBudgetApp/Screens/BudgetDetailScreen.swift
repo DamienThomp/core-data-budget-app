@@ -59,6 +59,20 @@ struct BudgetDetailScreen: View {
         }
     }
 
+    private func deleteExpense(at offsets: IndexSet) {
+
+        for index in offsets {
+            let expense = expenses[index]
+            context.delete(expense)
+        }
+
+        do {
+            try context.save()
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+
     private func resetForm() {
 
         title = ""
@@ -67,11 +81,13 @@ struct BudgetDetailScreen: View {
     }
 
     var body: some View {
-        VStack {
 
+        VStack {
             Form {
                 List {
-                    CustomListIemView(label: "Remaining", value: remaining)
+                    CustomListIemView(label: "Remaining:", value: remaining)
+                        .font(.title)
+                        .padding(.vertical, 4)
                         .foregroundStyle(remaining > 0 ? .green : .red)
                     CustomListIemView(label: "Total Expenses:", value: total)
                 }
@@ -107,6 +123,7 @@ struct BudgetDetailScreen: View {
                         ForEach(expenses, id: \.id) { expense in
                             ExpenseListView(expense: expense)
                         }
+                        .onDelete(perform: deleteExpense)
                     }
                 }
             }
