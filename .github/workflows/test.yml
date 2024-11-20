@@ -21,4 +21,4 @@ jobs:
     - name: List available Xcode versions
       run: ls /Applications | grep Xcode
     - name: Run tests
-      run: xcodebuild clean build test -project CoreDataBudgetApp.xcodeproj -scheme "CoreDataBudgetApp" -destination 'platform=iOS Simulator,name=iPhone 16' CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
+      run: xcodebuild clean build test -project CoreDataBudgetApp.xcodeproj -scheme "CoreDataBudgetApp" -destination 'platform=iOS Simulator,name=iPhone 15' CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
