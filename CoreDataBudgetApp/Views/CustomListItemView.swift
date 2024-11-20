@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct CustomListIemView: View {
-
+    
     let label: String
     let value: Double
-
+    
     var body: some View {
         HStack {
             Text(label)
