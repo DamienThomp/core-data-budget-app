@@ -13,7 +13,15 @@ struct BudgetListItemView: View {
 
     var body: some View {
         HStack {
-            Text(budget.title ?? "")
+            VStack(alignment: .leading) {
+                Text(budget.title ?? "")
+                if let dateCreated = budget.dateCreated {
+                    Text(
+                        dateCreated,
+                        format: .dateTime.day().month().year()
+                    ).font(.caption)
+                }
+            }
             Spacer()
             Text(
                 budget.amount,

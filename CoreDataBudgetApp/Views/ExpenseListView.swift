@@ -22,11 +22,12 @@ struct ExpenseListView: View {
 
             VStack(alignment: .leading) {
                 Text(expense.title ?? "")
-                Text(
-                    expense.dateCreated ?? Date(),
-                    format: .dateTime.day().month().year()
-                )
-                .font(.caption)
+                if let dateCreated = expense.dateCreated {
+                    Text(
+                        dateCreated,
+                        format: .dateTime.day().month().year()
+                    ).font(.caption)
+                }
             }
 
             Spacer()
