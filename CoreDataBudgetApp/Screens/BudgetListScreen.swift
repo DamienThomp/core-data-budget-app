@@ -46,10 +46,7 @@ struct BudgetListScreen: View {
             } else {
                 List {
                     ForEach(budgets, id: \.id) { budget in
-                        NavigationLink {
-                            BudgetDetailScreen(budget: budget)
-                                .environment(\.managedObjectContext, context)
-                        } label: {
+                        NavigationLink(value: budget) {
                             BudgetListItemView(budget: budget)
                                 .padding(.trailing, 8)
                                 .accessibilityLabel("Budget List item")
@@ -57,11 +54,7 @@ struct BudgetListScreen: View {
                     }
                     .onDelete(perform: deleteBudget)
                     .listRowBackground(
-                        RoundedRectangle(
-                            cornerRadius: 12
-                        ).fill(
-                            .thinMaterial
-                        )
+                        Rectangle().fill(.thinMaterial)
                     )
                 }
                 .scrollContentBackground(.hidden)
@@ -69,9 +62,9 @@ struct BudgetListScreen: View {
         }
         .navigationTitle("Budgets")
         .toolbar {
-
             ToolbarItem(placement: .topBarLeading) {
                 EditButton()
+                    .accessibilityLabel("Edit Buddget Items")
             }
 
             ToolbarItem(placement: .topBarTrailing) {
@@ -82,7 +75,6 @@ struct BudgetListScreen: View {
                 }
                 .accessibilityLabel("Add new budget")
             }
-
         }
         .tint(.white)
         .sheet(isPresented: $isPresented) {

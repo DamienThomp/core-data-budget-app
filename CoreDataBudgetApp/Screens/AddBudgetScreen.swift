@@ -36,6 +36,7 @@ struct AddBudgetScreen: View {
     }
 
     private func resetForm() {
+        
         title = ""
         limit = nil
         errorMessage = nil

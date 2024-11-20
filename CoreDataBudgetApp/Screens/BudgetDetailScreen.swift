@@ -117,9 +117,10 @@ struct BudgetDetailScreen: View {
                     Text("Save")
                         .frame(maxWidth: .infinity)
                 }
+                .disabled(!isFormValid)
                 .tint(.green)
                 .listRowBackground(Rectangle().fill(.thinMaterial))
-                .disabled(!isFormValid)
+
 
                 if let errorMessage {
                     Section("Error") {
