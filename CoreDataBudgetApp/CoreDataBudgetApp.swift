@@ -20,8 +20,11 @@ struct CoreDataBudgetApp: App {
         WindowGroup {
             NavigationStack {
                 BudgetListScreen()
-                    .environment(\.managedObjectContext, provider.context)
+                    .navigationDestination(for: Budget.self) { budget in
+                        BudgetDetailScreen(budget: budget)
+                    }
             }
+            .environment(\.managedObjectContext, provider.context)
         }
     }
 }
