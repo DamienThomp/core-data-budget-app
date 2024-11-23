@@ -53,8 +53,8 @@ struct AddBudgetScreen: View {
                     .accessibilityLabel("Budget Limit")
                     .accessibilityValue("\(limit ?? 0) total limit for budget item")
             }
-            .listRowBackground(Rectangle().fill(.thinMaterial))
-            
+            .listRowBackground(BackgroundThemeView())
+
             if let errorMessage {
                 Section("Error") {
                     Text(errorMessage)

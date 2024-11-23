@@ -8,36 +8,36 @@
 import SwiftUI
 
 struct BudgetListScreen: View {
-    
+
     @Environment(\.managedObjectContext) private var context
-    
+
     @FetchRequest(
         sortDescriptors: [
             SortDescriptor(\.dateCreated)
         ]
     ) private var budgets: FetchedResults<Budget>
-    
+
     @State private var isPresented: Bool = false
-    
+
     private func deleteBudget(at offsets: IndexSet) {
-        
+
         for index in offsets {
             let budget = budgets[index]
             context.delete(budget)
         }
-        
+
         do {
             try context.save()
         } catch {
             print(error.localizedDescription)
         }
     }
-    
+
     var body: some View {
         ZStack {
-            
+
             BackgroundGradientView(colors: [.pink, .black])
-            
+
             if budgets.isEmpty {
                 ContentUnavailableView(
                     "Add a Budget.",
@@ -53,11 +53,8 @@ struct BudgetListScreen: View {
                         }
                     }
                     .onDelete(perform: deleteBudget)
-                    .listRowBackground(
-                        Rectangle().fill(.thinMaterial)
-                    )
-                }
-                .scrollContentBackground(.hidden)
+                    .listRowBackground(BackgroundThemeView())
+                }.scrollContentBackground(.hidden)
             }
         }
         .navigationTitle("Budgets")
@@ -66,7 +63,7 @@ struct BudgetListScreen: View {
                 EditButton()
                     .accessibilityLabel("Edit Buddget Items")
             }
-            
+
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
                     isPresented = true
@@ -94,6 +91,9 @@ struct BudgetListScreen: View {
 #Preview {
     NavigationStack {
         BudgetListScreen()
+            .navigationDestination(for: Budget.self) { budget in
+                BudgetDetailScreen(budget: budget)
+            }
     }.environment(
         \.managedObjectContext,
          CoreDataProvider.preview.context
