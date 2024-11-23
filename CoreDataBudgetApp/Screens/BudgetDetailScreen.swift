@@ -15,6 +15,10 @@ struct BudgetDetailScreen: View {
 
     let budget: Budget
 
+    private var backgroundColors: [Color] {
+        [.teal, .cyan, .teal, .cyan, .lightTeal, .cyan, .darkTeal, .darkTeal, .darkTeal]
+    }
+
     init(budget: Budget) {
 
         self.budget = budget
@@ -86,7 +90,7 @@ struct BudgetDetailScreen: View {
 
         ZStack {
 
-            BackgroundGradientView(colors: [.teal, .black])
+            BackgroundGradientView(colors: backgroundColors)
 
             Form {
                 List {

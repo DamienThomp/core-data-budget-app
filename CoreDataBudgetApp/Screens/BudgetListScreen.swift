@@ -19,6 +19,10 @@ struct BudgetListScreen: View {
 
     @State private var isPresented: Bool = false
 
+    private var backgroundColors: [Color] {
+        [.pink, .magenta, .pink, .magenta, .white, .magenta]
+    }
+
     private func deleteBudget(at offsets: IndexSet) {
 
         for index in offsets {
@@ -36,13 +40,19 @@ struct BudgetListScreen: View {
     var body: some View {
         ZStack {
 
-            BackgroundGradientView(colors: [.pink, .black])
+            BackgroundGradientView(colors: backgroundColors)
 
             if budgets.isEmpty {
                 ContentUnavailableView(
                     "Add a Budget.",
                     systemImage: "creditcard"
-                ).foregroundStyle(.pink)
+                )
+                .background(.ultraThinMaterial)
+                .frame(maxWidth: .infinity, maxHeight: 300)
+                .clipShape(RoundedRectangle(cornerRadius: 12))
+                .padding()
+                .foregroundStyle(.white)
+                
             } else {
                 List {
                     ForEach(budgets, id: \.id) { budget in

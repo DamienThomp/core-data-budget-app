@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		38B854642CF19A5E00516E71 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B854632CF19A5E00516E71 /* Color+Extension.swift */; };
 		38C185662CE99482001CDBAA /* CoreDataBudgetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C185652CE99482001CDBAA /* CoreDataBudgetApp.swift */; };
 		38C1856A2CE99483001CDBAA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38C185692CE99483001CDBAA /* Assets.xcassets */; };
 		38C1856D2CE99483001CDBAA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38C1856C2CE99483001CDBAA /* Preview Assets.xcassets */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		38B854632CF19A5E00516E71 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		38C185622CE99482001CDBAA /* CoreDataBudgetApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreDataBudgetApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38C185652CE99482001CDBAA /* CoreDataBudgetApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataBudgetApp.swift; sourceTree = "<group>"; };
 		38C185692CE99483001CDBAA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 				38C1857F2CEAE4E4001CDBAA /* String+Extensions.swift */,
 				38C185812CEAEAB4001CDBAA /* Budget+Extensions.swift */,
 				38C185882CEC0702001CDBAA /* Locale+Extensions.swift */,
+				38B854632CF19A5E00516E71 /* Color+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -266,6 +269,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				38EA45C22CF16ED100F4F650 /* BackgroundThemeView.swift in Sources */,
+				38B854642CF19A5E00516E71 /* Color+Extension.swift in Sources */,
 				38C1858D2CEC0E15001CDBAA /* CustomListItemView.swift in Sources */,
 				38C185B82CED3085001CDBAA /* BackgroundGradientView.swift in Sources */,
 				38C1857D2CEAD959001CDBAA /* AddBudgetScreen.swift in Sources */,
