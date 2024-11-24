@@ -38,7 +38,6 @@ final class CoreDataProvider {
         } catch {
             print(error)
         }
-        
         return provider
     }()
     
