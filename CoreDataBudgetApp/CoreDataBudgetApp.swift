@@ -11,9 +11,11 @@ import SwiftUI
 struct CoreDataBudgetApp: App {
 
     let provider: CoreDataProvider
+    let budgetViewModel: BudgetViewModel
 
     init() {
         provider = CoreDataProvider()
+        budgetViewModel = BudgetViewModel(context: provider.context)
     }
 
     var body: some Scene {
@@ -25,6 +27,7 @@ struct CoreDataBudgetApp: App {
                     }
             }
             .environment(\.managedObjectContext, provider.context)
+            .environment(budgetViewModel)
         }
     }
 }

@@ -9,35 +9,16 @@ import SwiftUI
 
 struct BudgetDetailScreen: View {
 
-    @Environment(\.managedObjectContext) private var context
-
-    @FetchRequest(sortDescriptors: []) private var expenses: FetchedResults<Expense>
-
-    let budget: Budget
-
-    private var backgroundColors: [Color] {
-        [.teal, .cyan, .teal, .cyan, .lightTeal, .cyan, .darkTeal, .darkTeal, .darkTeal]
-    }
-
-    init(budget: Budget) {
-
-        self.budget = budget
-        _expenses = FetchRequest(sortDescriptors: [], predicate: NSPredicate(format: "budget == %@", budget))
-    }
+    @Environment(BudgetViewModel.self) private var viewModel
 
     @State private var title: String = ""
     @State private var amount: Double?
-    @State private var errorMessage: String?
     @FocusState private var fieldIsFocused: Bool
 
-    private var total: Double {
-        expenses.reduce(0) { result, expense in
-            return expense.amount + result
-        }
-    }
+    let budget: Budget
 
     private var remaining: Double {
-        budget.amount - total
+        budget.amount - viewModel.totalExpenses
     }
 
     private var isFormValid: Bool {
@@ -47,43 +28,38 @@ struct BudgetDetailScreen: View {
         return !title.isEmptyOrWhitespace && Double(amount) > 0
     }
 
-    private func saveExpense() {
+    private var backgroundColors: [Color] {
 
-        let expense = Expense(context: context)
-        expense.title = title
-        expense.amount = amount ?? 0.0
-        expense.dateCreated = Date()
+        [
+            .teal, .cyan, .teal,
+            .cyan, .lightTeal, .cyan,
+            .darkTeal, .darkTeal, .darkTeal
+        ]
+    }
 
-        budget.addToExpenses(expense)
+    private var sectionTitleColor: Color {
 
-        do {
-            try context.save()
-        } catch {
-            errorMessage = "Unable to save expense."
-            print(error.localizedDescription)
+        if #available(iOS 18.0, *) {
+            return .black
+        } else {
+            return .white
         }
     }
 
+    private func saveExpense() {
+        viewModel.saveExpense(for: budget, title: title, amount: amount ?? 0.0)
+    }
+
     private func deleteExpense(at offsets: IndexSet) {
-
-        for index in offsets {
-            let expense = expenses[index]
-            context.delete(expense)
-        }
-
-        do {
-            try context.save()
-        } catch {
-            print(error.localizedDescription)
-        }
+        viewModel.deleteExpense(at: offsets, for: budget)
     }
 
     private func resetForm() {
 
         title = ""
         amount = nil
-        errorMessage = nil
         fieldIsFocused = false
+        viewModel.errorMessage = nil
     }
 
     var body: some View {
@@ -92,27 +68,31 @@ struct BudgetDetailScreen: View {
 
             BackgroundGradientView(colors: backgroundColors)
 
-            Form {
-                List {
+            List {
+
+                Section {
                     CustomListIemView(label: "Remaining:", value: remaining)
                         .font(.title)
                         .padding(.vertical, 4)
                         .foregroundStyle(remaining > 0 ? .green : .red)
-                    CustomListIemView(label: "Total Expenses:", value: total)
-                }.listRowBackground(BackgroundThemeView())
+                    CustomListIemView(label: "Total Expenses:", value: viewModel.totalExpenses)
+                }.listRowBackground(ListRowBackgroundTheme())
 
                 Section("New Expense") {
                     TextField("Title", text: $title)
                         .focused($fieldIsFocused)
+                        .foregroundStyle(.white)
                         .accessibilityLabel("Expense Title")
                         .accessibilityValue(title)
                     TextField("Amount", value: $amount, format: .number)
+                        .foregroundStyle(.white)
                         .focused($fieldIsFocused)
                         .keyboardType(.decimalPad)
                         .accessibilityLabel("Expense Amount")
                         .accessibilityValue("\(amount ?? 0) total amount for expense")
                 }
-                .listRowBackground(BackgroundThemeView())
+                .listRowBackground(ListRowBackgroundTheme())
+                .foregroundStyle(sectionTitleColor)
 
                 Button {
                     saveExpense()
@@ -123,34 +103,37 @@ struct BudgetDetailScreen: View {
                 }
                 .disabled(!isFormValid)
                 .tint(.green)
-                .listRowBackground(BackgroundThemeView())
+                .listRowBackground(ListRowBackgroundTheme())
 
 
-                if let errorMessage {
+                if let errorMessage = viewModel.errorMessage {
                     Section("Error") {
                         Text(errorMessage)
                             .accessibilityLabel("Error message")
                             .foregroundStyle(.pink)
-                    }.listRowBackground(BackgroundThemeView())
+                    }
+                    .listRowBackground(ListRowBackgroundTheme())
+                    .foregroundStyle(sectionTitleColor)
                 }
 
                 Section("Expenses") {
-                    List {
-                        if expenses.isEmpty {
-                            ContentUnavailableView(
-                                "Add an expense.",
-                                systemImage: "cart.badge.plus"
-                            )
-                            .foregroundStyle(.mint)
-                        }
-                        ForEach(expenses, id: \.id) { expense in
-                            ExpenseListView(expense: expense)
-                        }
-                        .onDelete(perform: deleteExpense)
-                    }.listRowBackground(BackgroundThemeView())
+                    if viewModel.expenses.isEmpty {
+                        ContentUnavailableView(
+                            "Add an expense.",
+                            systemImage: "cart.badge.plus"
+                        )
+                        .foregroundStyle(.mint)
+                    }
+                    ForEach(viewModel.expenses, id: \.id) { expense in
+                        ExpenseListView(expense: expense).foregroundStyle(.white)
+                    }
+                    .onDelete(perform: deleteExpense)
                 }
+                .listRowBackground(ListRowBackgroundTheme())
+                .foregroundStyle(sectionTitleColor)
             }
         }
+        .onAppear { viewModel.fetchExpense(for: budget) }
         .preferredColorScheme(.dark)
         .scrollContentBackground(.hidden)
         .navigationTitle(budget.title ?? "Budget")
@@ -160,19 +143,26 @@ struct BudgetDetailScreen: View {
 // MARK: - Container view for preview rendering with budget
 struct BudgetDetailScreenContainer: View {
 
-    @FetchRequest(sortDescriptors: [])  private var budgets: FetchedResults<Budget>
+    @Environment(BudgetViewModel.self) private var vm
 
     var body: some View {
-        BudgetDetailScreen(budget: budgets[0])
+        VStack {
+            if let budget = vm.budgets.first {
+                BudgetDetailScreen(budget: budget)
+            } else {
+                EmptyView()
+            }
+
+        }.onAppear { vm.fetchBudgets() }
     }
 }
 
 #Preview {
+    let context = CoreDataProvider.preview.context
+    let vm = BudgetViewModel(context: context)
+
     NavigationStack {
         BudgetDetailScreenContainer()
-            .environment(
-                \.managedObjectContext,
-                 CoreDataProvider.preview.context
-            )
+            .environment(vm)
     }
 }

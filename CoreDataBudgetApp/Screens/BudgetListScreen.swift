@@ -10,31 +10,11 @@ import SwiftUI
 struct BudgetListScreen: View {
 
     @Environment(\.managedObjectContext) private var context
-
-    @FetchRequest(
-        sortDescriptors: [
-            SortDescriptor(\.dateCreated)
-        ]
-    ) private var budgets: FetchedResults<Budget>
-
+    @Environment(BudgetViewModel.self) private var viewModel
     @State private var isPresented: Bool = false
 
     private var backgroundColors: [Color] {
-        [.pink, .magenta, .pink, .magenta, .white, .magenta]
-    }
-
-    private func deleteBudget(at offsets: IndexSet) {
-
-        for index in offsets {
-            let budget = budgets[index]
-            context.delete(budget)
-        }
-
-        do {
-            try context.save()
-        } catch {
-            print(error.localizedDescription)
-        }
+        [.pink, .magenta, .pink, .magenta, .lightMagenta, .magenta]
     }
 
     var body: some View {
@@ -42,7 +22,7 @@ struct BudgetListScreen: View {
 
             BackgroundGradientView(colors: backgroundColors)
 
-            if budgets.isEmpty {
+            if viewModel.budgets.isEmpty {
                 ContentUnavailableView(
                     "Add a Budget.",
                     systemImage: "creditcard"
@@ -55,22 +35,24 @@ struct BudgetListScreen: View {
                 
             } else {
                 List {
-                    ForEach(budgets, id: \.id) { budget in
+                    ForEach(viewModel.budgets, id: \.id) { budget in
                         NavigationLink(value: budget) {
                             BudgetListItemView(budget: budget)
                                 .padding(.trailing, 8)
                                 .accessibilityLabel("Budget List item")
                         }
                     }
-                    .onDelete(perform: deleteBudget)
-                    .listRowBackground(BackgroundThemeView())
+                    .onDelete(perform: viewModel.deleteBudget)
+                    .listRowBackground(ListRowBackgroundTheme())
                 }.scrollContentBackground(.hidden)
             }
         }
         .navigationTitle("Budgets")
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
+
                 EditButton()
+                    .disabled(viewModel.budgets.isEmpty)
                     .accessibilityLabel("Edit Buddget Items")
             }
 
@@ -95,17 +77,23 @@ struct BudgetListScreen: View {
             .presentationDragIndicator(.visible)
         }
         .preferredColorScheme(.dark)
+        .onAppear {
+            viewModel.fetchBudgets()
+        }
     }
 }
 
 #Preview {
+
+    let context = CoreDataProvider.preview.context
+    let vm = BudgetViewModel(context: context)
+
     NavigationStack {
         BudgetListScreen()
             .navigationDestination(for: Budget.self) { budget in
                 BudgetDetailScreen(budget: budget)
             }
-    }.environment(
-        \.managedObjectContext,
-         CoreDataProvider.preview.context
-    )
+    }
+    .environment(\.managedObjectContext, context)
+    .environment(vm)
 }

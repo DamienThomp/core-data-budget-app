@@ -8,38 +8,31 @@
 import SwiftUI
 
 struct AddBudgetScreen: View {
-    
+
     @Environment(\.managedObjectContext) private var context
     @Environment(\.dismiss) private var dismiss
-    
+    @Environment(BudgetViewModel.self) private var viewModel
+
     @State private var title: String = ""
     @State private var limit: Double?
-    @State private var errorMessage: String?
     
     private var isFormValid: Bool {
+
         guard let limit else { return false }
+
         return !title.isEmptyOrWhitespace && Double(limit) > 0
     }
     
     private func saveBudgetItem() {
-        
-        let budget = Budget(context: context)
-        budget.title = title
-        budget.amount = limit ?? 0.0
-        budget.dateCreated = Date()
-        
-        do {
-            try context.save()
-        } catch {
-            errorMessage = "Unable to save budget."
-        }
+
+        viewModel.saveBudget(with: title, for: limit ?? 0.0)
     }
     
     private func resetForm() {
         
         title = ""
         limit = nil
-        errorMessage = nil
+        viewModel.errorMessage = nil
     }
     
     var body: some View {
@@ -53,9 +46,9 @@ struct AddBudgetScreen: View {
                     .accessibilityLabel("Budget Limit")
                     .accessibilityValue("\(limit ?? 0) total limit for budget item")
             }
-            .listRowBackground(BackgroundThemeView())
+            .listRowBackground(ListRowBackgroundTheme())
 
-            if let errorMessage {
+            if let errorMessage = viewModel.errorMessage {
                 Section("Error") {
                     Text(errorMessage)
                         .accessibilityLabel("Error message")
@@ -69,7 +62,7 @@ struct AddBudgetScreen: View {
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
                     if Budget.exists(context: context, title: title) {
-                        errorMessage = "Budget already exists for this title."
+                        viewModel.errorMessage = "Budget already exists for this title."
                         return
                     }
                     
@@ -95,11 +88,13 @@ struct AddBudgetScreen: View {
 }
 
 #Preview {
+
+    let context = CoreDataProvider.preview.context
+    let vm = BudgetViewModel(context: context)
+
     NavigationStack {
         AddBudgetScreen()
     }
-    .environment(
-        \.managedObjectContext,
-         CoreDataProvider.preview.context
-    )
+    .environment(\.managedObjectContext, context)
+    .environment(vm)
 }
