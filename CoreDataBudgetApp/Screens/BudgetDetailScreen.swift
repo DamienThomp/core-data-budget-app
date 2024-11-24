@@ -125,7 +125,7 @@ struct BudgetDetailScreen: View {
                         .foregroundStyle(.mint)
                     }
                     ForEach(viewModel.expenses, id: \.id) { expense in
-                        ExpenseListView(expense: expense).foregroundStyle(.white)
+                        ExpenseListCellView(expense: expense).foregroundStyle(.white)
                     }
                     .onDelete(perform: deleteExpense)
                 }

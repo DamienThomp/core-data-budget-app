@@ -1,5 +1,5 @@
 //
-//  ExpenseListView.swift
+//  ExpenseListCellView.swift
 //  CoreDataBudgetApp
 //
 //  Created by Damien L Thompson on 2024-11-18.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ExpenseListView: View {
+struct ExpenseListCellView: View {
 
     let expense: Expense
 
