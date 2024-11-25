@@ -74,6 +74,29 @@ final class BudgetViewModelTests: XCTestCase {
         XCTAssertTrue(viewModel.budgets.isEmpty, "Expected no budgets after deletion, but got \(viewModel.budgets.count).")
     }
 
+    // MARK: - Test budgetExists
+    func testBudgetExists_whenBudgetExists_returnsTrueAndSetsErrorMessage() {
+
+        let budget = Budget(context: context)
+        budget.title = "Test Budget"
+        budget.amount = 100.0
+        budget.dateCreated = Date()
+        try? context.save()
+
+        let result = viewModel.budgetExists(title: "Test Budget")
+
+        XCTAssertTrue(result, "Expected budget to exist, but it doesn't.")
+        XCTAssertEqual(viewModel.errorMessage, "Budget already exists for this title.", "Error message doesn't match.")
+    }
+
+    func testBudgetExists_whenBudgetDoesNotExist_returnsFalseAndNoErrorMessage() {
+
+        let result = viewModel.budgetExists(title: "Non-Existent Budget")
+
+        XCTAssertFalse(result, "Expected budget to not exist, but it does.")
+        XCTAssertNil(viewModel.errorMessage, "Error message should not be set when budget does not exist.")
+    }
+
     // MARK: - Test fetchExpense
     func testFetchExpense_noExpenses_returnsEmptyArray() {
 
@@ -149,7 +172,10 @@ final class BudgetViewModelTests: XCTestCase {
     func testTotalExpenses_calculatesCorrectly() {
 
         let budget = Budget(context: context)
-
+        budget.title = "Test Budget"
+        budget.amount = 100.0
+        budget.dateCreated = Date()
+        
         let expense1 = Expense(context: context)
         expense1.title = "Expense 1"
         expense1.amount = 50.0

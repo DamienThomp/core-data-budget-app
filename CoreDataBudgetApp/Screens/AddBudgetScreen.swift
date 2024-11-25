@@ -61,8 +61,7 @@ struct AddBudgetScreen: View {
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
-                    if Budget.exists(context: context, title: title) {
-                        viewModel.errorMessage = "Budget already exists for this title."
+                    if viewModel.budgetExists(title: title) {
                         return
                     }
                     

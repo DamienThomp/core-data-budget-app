@@ -13,13 +13,10 @@ struct BudgetDetailScreen: View {
 
     @State private var title: String = ""
     @State private var amount: Double?
+    @State private var editinExpense: Expense?
     @FocusState private var fieldIsFocused: Bool
 
     let budget: Budget
-
-    private var remaining: Double {
-        budget.amount - viewModel.totalExpenses
-    }
 
     private var isFormValid: Bool {
 
@@ -29,7 +26,6 @@ struct BudgetDetailScreen: View {
     }
 
     private var backgroundColors: [Color] {
-
         [
             .teal, .cyan, .teal,
             .cyan, .lightTeal, .cyan,
@@ -70,29 +66,22 @@ struct BudgetDetailScreen: View {
 
             List {
 
-                Section {
-                    CustomListIemView(label: "Remaining:", value: remaining)
-                        .font(.title)
-                        .padding(.vertical, 4)
-                        .foregroundStyle(remaining > 0 ? .green : .red)
-                    CustomListIemView(label: "Total Expenses:", value: viewModel.totalExpenses)
-                }.listRowBackground(ListRowBackgroundTheme())
-
-                Section("New Expense") {
-                    TextField("Title", text: $title)
-                        .focused($fieldIsFocused)
-                        .foregroundStyle(.white)
-                        .accessibilityLabel("Expense Title")
-                        .accessibilityValue(title)
-                    TextField("Amount", value: $amount, format: .number)
-                        .foregroundStyle(.white)
-                        .focused($fieldIsFocused)
-                        .keyboardType(.decimalPad)
-                        .accessibilityLabel("Expense Amount")
-                        .accessibilityValue("\(amount ?? 0) total amount for expense")
+                if let remaining = viewModel.remaining {
+                    Section {
+                        CustomListIemView(label: "Remaining:", value: remaining)
+                            .font(.title)
+                            .padding(.vertical, 4)
+                            .foregroundStyle(remaining > 0 ? .green : .red)
+                        CustomListIemView(label: "Total Expenses:", value: viewModel.totalExpenses)
+                    }.listRowBackground(ListRowBackgroundTheme())
                 }
-                .listRowBackground(ListRowBackgroundTheme())
-                .foregroundStyle(sectionTitleColor)
+
+                ExpenseFormView(
+                    title: $title,
+                    amount: $amount,
+                    fieldIsFocused: $fieldIsFocused,
+                    sectionHeaderText: "New Expense"
+                ).foregroundStyle(sectionTitleColor)
 
                 Button {
                     saveExpense()
@@ -125,7 +114,12 @@ struct BudgetDetailScreen: View {
                         .foregroundStyle(.mint)
                     }
                     ForEach(viewModel.expenses, id: \.id) { expense in
-                        ExpenseListCellView(expense: expense).foregroundStyle(.white)
+                        ExpenseListCellView(expense: expense)
+                            .contentShape(Rectangle())
+                            .foregroundStyle(.white)
+                            .onTapGesture {
+                                editinExpense = expense
+                            }
                     }
                     .onDelete(perform: deleteExpense)
                 }
@@ -137,6 +131,14 @@ struct BudgetDetailScreen: View {
         .preferredColorScheme(.dark)
         .scrollContentBackground(.hidden)
         .navigationTitle(budget.title ?? "Budget")
+        .sheet(item: $editinExpense) { expense in
+            NavigationStack {
+                UpdateExpenseScreen(expense: expense)
+            }
+            .presentationBackground(.thinMaterial)
+            .presentationDetents([.medium])
+            .presentationDragIndicator(.visible)
+        }
     }
 }
 
