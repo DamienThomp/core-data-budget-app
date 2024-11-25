@@ -12,6 +12,7 @@
 		38B8546B2CF2B8D100516E71 /* BudgetViewModelTexts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B8546A2CF2B8D100516E71 /* BudgetViewModelTexts.swift */; };
 		38B8546D2CF2D29F00516E71 /* ExpenseFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B8546C2CF2D29F00516E71 /* ExpenseFormView.swift */; };
 		38B8546F2CF2D3BA00516E71 /* UpdateExpenseScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B8546E2CF2D3BA00516E71 /* UpdateExpenseScreen.swift */; };
+		38B854712CF4EEF200516E71 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 38B854702CF4EEF200516E71 /* Localizable.xcstrings */; };
 		38C185662CE99482001CDBAA /* CoreDataBudgetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C185652CE99482001CDBAA /* CoreDataBudgetApp.swift */; };
 		38C1856A2CE99483001CDBAA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38C185692CE99483001CDBAA /* Assets.xcassets */; };
 		38C1856D2CE99483001CDBAA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38C1856C2CE99483001CDBAA /* Preview Assets.xcassets */; };
@@ -45,6 +46,7 @@
 		38B8546A2CF2B8D100516E71 /* BudgetViewModelTexts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetViewModelTexts.swift; sourceTree = "<group>"; };
 		38B8546C2CF2D29F00516E71 /* ExpenseFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseFormView.swift; sourceTree = "<group>"; };
 		38B8546E2CF2D3BA00516E71 /* UpdateExpenseScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateExpenseScreen.swift; sourceTree = "<group>"; };
+		38B854702CF4EEF200516E71 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		38C185622CE99482001CDBAA /* CoreDataBudgetApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreDataBudgetApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38C185652CE99482001CDBAA /* CoreDataBudgetApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataBudgetApp.swift; sourceTree = "<group>"; };
 		38C185692CE99483001CDBAA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 		38C185592CE99481001CDBAA = {
 			isa = PBXGroup;
 			children = (
+				38B854702CF4EEF200516E71 /* Localizable.xcstrings */,
 				38C185642CE99482001CDBAA /* CoreDataBudgetApp */,
 				38C185932CEC2248001CDBAA /* CoreDataBudgetAppTests */,
 				38C185632CE99482001CDBAA /* Products */,
@@ -246,6 +249,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"fr-CA",
 			);
 			mainGroup = 38C185592CE99481001CDBAA;
 			productRefGroup = 38C185632CE99482001CDBAA /* Products */;
@@ -265,6 +269,7 @@
 			files = (
 				38C1856D2CE99483001CDBAA /* Preview Assets.xcassets in Resources */,
 				38C1856A2CE99483001CDBAA /* Assets.xcassets in Resources */,
+				38B854712CF4EEF200516E71 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,6 +385,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -436,6 +442,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

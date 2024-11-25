@@ -83,7 +83,7 @@ struct BudgetListScreen: View {
     }
 }
 
-#Preview {
+#Preview("Default English") {
 
     let context = CoreDataProvider.preview.context
     let vm = BudgetViewModel(context: context)
@@ -94,6 +94,21 @@ struct BudgetListScreen: View {
                 BudgetDetailScreen(budget: budget)
             }
     }
+    .environment(\.managedObjectContext, context)
+    .environment(vm)
+}
+
+#Preview("French") {
+    let context = CoreDataProvider.preview.context
+    let vm = BudgetViewModel(context: context)
+
+    NavigationStack {
+        BudgetListScreen()
+            .navigationDestination(for: Budget.self) { budget in
+                BudgetDetailScreen(budget: budget)
+            }
+    }
+    .environment(\.locale, .init(identifier: "fr_CA"))
     .environment(\.managedObjectContext, context)
     .environment(vm)
 }

@@ -150,7 +150,7 @@ struct BudgetDetailScreenContainer: View {
     var body: some View {
         VStack {
             if let budget = vm.budgets.first {
-                BudgetDetailScreen(budget: budget)
+                BudgetDetailScreen(budget: budget).environment(vm)
             } else {
                 EmptyView()
             }
@@ -159,12 +159,22 @@ struct BudgetDetailScreenContainer: View {
     }
 }
 
-#Preview {
+#Preview("Default English") {
     let context = CoreDataProvider.preview.context
     let vm = BudgetViewModel(context: context)
 
     NavigationStack {
         BudgetDetailScreenContainer()
             .environment(vm)
+    }
+}
+
+#Preview("French") {
+    let context = CoreDataProvider.preview.context
+    let vm = BudgetViewModel(context: context)
+
+    NavigationStack {
+        BudgetDetailScreenContainer()
+            .environment(vm).environment(\.locale, .init(identifier: "fr_CA"))
     }
 }
