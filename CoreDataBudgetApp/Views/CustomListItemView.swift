@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CustomListIemView: View {
     
-    let label: String
+    let label: LocalizedStringKey
     let value: Double
     
     var body: some View {
@@ -23,6 +23,11 @@ struct CustomListIemView: View {
     }
 }
 
-#Preview {
-    CustomListIemView(label: "Some Label", value: 20)
+#Preview("Default English") {
+    CustomListIemView(label: "New Expense", value: 20)
+}
+
+#Preview("French") {
+    CustomListIemView(label: "New Expense", value: 20)
+        .environment(\.locale, .init(identifier: "fr_CA"))
 }

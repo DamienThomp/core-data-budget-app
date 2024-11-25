@@ -13,7 +13,7 @@ struct ExpenseFormView: View {
     @Binding var amount: Double?
     @FocusState.Binding var fieldIsFocused: Bool
 
-    let sectionHeaderText: String
+    let sectionHeaderText: LocalizedStringKey
 
     var body: some View {
         Section(sectionHeaderText) {
