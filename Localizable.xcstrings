@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "" : {
+
+    },
     "%lf total amount for expense" : {
       "localizations" : {
         "fr-CA" : {

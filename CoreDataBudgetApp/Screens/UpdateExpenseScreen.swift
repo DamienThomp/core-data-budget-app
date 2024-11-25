@@ -41,6 +41,7 @@ struct UpdateExpenseScreen: View {
                 sectionHeaderText: ""
             )
         }
+        .scrollContentBackground(.hidden)
         .navigationTitle("Update Expense")
         .toolbar {
             ToolbarItem {
