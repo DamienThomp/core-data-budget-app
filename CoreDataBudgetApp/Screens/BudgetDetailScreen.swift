@@ -13,7 +13,7 @@ struct BudgetDetailScreen: View {
 
     @State private var title: String = ""
     @State private var amount: Double?
-    @State private var editinExpense: Expense?
+    @State private var editingExpense: Expense?
     @FocusState private var fieldIsFocused: Bool
 
     let budget: Budget
@@ -118,7 +118,7 @@ struct BudgetDetailScreen: View {
                             .contentShape(Rectangle())
                             .foregroundStyle(.white)
                             .onTapGesture {
-                                editinExpense = expense
+                                editingExpense = expense
                             }
                     }
                     .onDelete(perform: deleteExpense)
@@ -131,7 +131,7 @@ struct BudgetDetailScreen: View {
         .preferredColorScheme(.dark)
         .scrollContentBackground(.hidden)
         .navigationTitle(budget.title ?? "Budget")
-        .sheet(item: $editinExpense) { expense in
+        .sheet(item: $editingExpense) { expense in
             NavigationStack {
                 UpdateExpenseScreen(expense: expense)
             }
