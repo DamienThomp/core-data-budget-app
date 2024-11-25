@@ -22,10 +22,35 @@ class BudgetViewModel {
         }
     }
 
+    var remaining: Double? {
+
+        guard let budget = expenses.first?.budget else { return nil }
+
+        return budget.amount - totalExpenses
+    }
+
     private let context: NSManagedObjectContext
 
     init(context: NSManagedObjectContext) {
         self.context = context
+    }
+
+    func budgetExists(title: String) -> Bool {
+        
+        let fetchRequest = NSFetchRequest<Budget>(entityName: "Budget")
+        fetchRequest.predicate = NSPredicate(format: "title == %@", title)
+
+        do {
+            let result = try context.fetch(fetchRequest)
+
+            if !result.isEmpty {
+                errorMessage = "Budget already exists for this title."
+            }
+
+            return !result.isEmpty
+        } catch {
+            return false
+        }
     }
 
     func fetchBudgets() {
@@ -103,6 +128,22 @@ class BudgetViewModel {
         }
     }
 
+    func updateExpense(for expense: Expense) {
+
+        guard let budget = expense.budget else {
+            print("missing budget")
+            return
+        }
+
+        do {
+            try context.save()
+            fetchExpense(for: budget)
+        } catch let error as NSError {
+            errorMessage = "Unable to update expense."
+            NSLog("Unable to update expense: \(error), \(error.userInfo)")
+        }
+    }
+
     func deleteExpense(at offsets: IndexSet, for budget: Budget) {
 
         for index in offsets {
@@ -113,8 +154,9 @@ class BudgetViewModel {
         do {
             try context.save()
             fetchExpense(for: budget)
-        } catch {
-            print(error.localizedDescription)
+        } catch let error as NSError {
+            errorMessage = "Unable to delete expense."
+            NSLog("Unable to delete expense: \(error), \(error.userInfo)")
         }
     }
 }
