@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		38B854642CF19A5E00516E71 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B854632CF19A5E00516E71 /* Color+Extension.swift */; };
 		38B854682CF29F2600516E71 /* BudgetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B854672CF29F2600516E71 /* BudgetViewModel.swift */; };
-		38B8546B2CF2B8D100516E71 /* BudgetViewModelTexts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B8546A2CF2B8D100516E71 /* BudgetViewModelTexts.swift */; };
+		38B8546B2CF2B8D100516E71 /* BudgetViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B8546A2CF2B8D100516E71 /* BudgetViewModelTests.swift */; };
 		38B8546D2CF2D29F00516E71 /* ExpenseFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B8546C2CF2D29F00516E71 /* ExpenseFormView.swift */; };
 		38B8546F2CF2D3BA00516E71 /* UpdateExpenseScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B8546E2CF2D3BA00516E71 /* UpdateExpenseScreen.swift */; };
 		38B854712CF4EEF200516E71 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 38B854702CF4EEF200516E71 /* Localizable.xcstrings */; };
@@ -43,7 +43,7 @@
 /* Begin PBXFileReference section */
 		38B854632CF19A5E00516E71 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		38B854672CF29F2600516E71 /* BudgetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetViewModel.swift; sourceTree = "<group>"; };
-		38B8546A2CF2B8D100516E71 /* BudgetViewModelTexts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetViewModelTexts.swift; sourceTree = "<group>"; };
+		38B8546A2CF2B8D100516E71 /* BudgetViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetViewModelTests.swift; sourceTree = "<group>"; };
 		38B8546C2CF2D29F00516E71 /* ExpenseFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseFormView.swift; sourceTree = "<group>"; };
 		38B8546E2CF2D3BA00516E71 /* UpdateExpenseScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateExpenseScreen.swift; sourceTree = "<group>"; };
 		38B854702CF4EEF200516E71 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
@@ -180,7 +180,7 @@
 		38C185932CEC2248001CDBAA /* CoreDataBudgetAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				38B8546A2CF2B8D100516E71 /* BudgetViewModelTexts.swift */,
+				38B8546A2CF2B8D100516E71 /* BudgetViewModelTests.swift */,
 			);
 			path = CoreDataBudgetAppTests;
 			sourceTree = "<group>";
@@ -311,7 +311,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				38B8546B2CF2B8D100516E71 /* BudgetViewModelTexts.swift in Sources */,
+				38B8546B2CF2B8D100516E71 /* BudgetViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

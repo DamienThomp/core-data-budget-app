@@ -1,5 +1,5 @@
 //
-//  BudgetViewModelTexts.swift
+//  BudgetViewModelTests.swift
 //  CoreDataBudgetAppTests
 //
 //  Created by Damien L Thompson on 2024-11-23.
