@@ -14,7 +14,7 @@ struct BudgetListScreen: View {
     @State private var isPresented: Bool = false
 
     private var backgroundColors: [Color] {
-        [.pink, .magenta, .pink, .magenta, .lightMagenta, .magenta]
+        [.pink, .magenta, .pink, .magenta, .lightMagenta, .magenta, .darkPink, .darkPink, .darkPink]
     }
 
     var body: some View {

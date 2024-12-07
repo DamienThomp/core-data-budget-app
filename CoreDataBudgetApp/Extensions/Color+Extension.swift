@@ -17,6 +17,10 @@ extension Color {
         Color(hue: 0.89, saturation: 0.26, brightness: 1)
     }
 
+    static var darkPink: Self {
+        Color(hue: 0.86, saturation: 0.80, brightness: 0.5)
+    }
+
     static var peach: Self {
         Color(hue: 0.95, saturation: 0.69, brightness: 1)
     }
