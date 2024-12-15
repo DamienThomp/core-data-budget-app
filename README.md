@@ -1,6 +1,6 @@
 # Budget App Project
 
-Very basic demo Budget App project built with SwiftUI, using CoreData for persistent state. Includes loacalization for FR-CA (Google Translated). 
+Very basic demo Budget App project built with SwiftUI, using CoreData. Includes loacalization for FR-CA (Google Translated). 
 Experimented with iOS 18 mesh gradients for backgrounds, with subtle animation. 
 
 ## Future Improvements
