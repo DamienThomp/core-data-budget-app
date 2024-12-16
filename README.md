@@ -6,7 +6,6 @@ Experimented with iOS 18 mesh gradients for backgrounds, with subtle animation.
 ## Future Improvements
 
  - [ ] Add quantity for expenses
- - [ ] Add light and dark mode themes (currently only supports dark mode)
  - [ ] Improve layout and code quality (refactor passes)
 
 ## Screenshot
